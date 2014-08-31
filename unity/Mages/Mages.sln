@@ -1,19 +1,27 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-
+Project("{29149670-A2E5-555D-017C-A37206D66C37}") = "Mages", "Assembly-CSharp.csproj", "{E1469A0C-AA6A-16DB-62FA-2A54D55C4F8E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-
+		{E1469A0C-AA6A-16DB-62FA-2A54D55C4F8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1469A0C-AA6A-16DB-62FA-2A54D55C4F8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1469A0C-AA6A-16DB-62FA-2A54D55C4F8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1469A0C-AA6A-16DB-62FA-2A54D55C4F8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+<<<<<<< HEAD
 																		GlobalSection(MonoDevelopProperties) = preSolution
+=======
+																																								GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> 8b734461d2721e1419a150b5ac490b768f6a851a
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
