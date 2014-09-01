@@ -1,12 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\Mooving.cs">
     <Files>
-<<<<<<< HEAD
-      <File FileName="Assets\scripts\Mooving.cs" Line="29" Column="26" />
-=======
-      <File FileName="Assets\scripts\Mooving.cs" Line="27" Column="5" />
->>>>>>> 8b734461d2721e1419a150b5ac490b768f6a851a
+      <File FileName="Assets\scripts\Mooving.cs" Line="53" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
