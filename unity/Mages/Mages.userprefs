@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\Mooving.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\Beacon.cs">
     <Files>
-      <File FileName="Assets\scripts\Mooving.cs" Line="22" Column="39" />
+      <File FileName="Assets\scripts\Mooving.cs" Line="42" Column="3" />
+      <File FileName="Assets\scripts\Platform.cs" Line="3" Column="1" />
+      <File FileName="Assets\scripts\Beacon.cs" Line="57" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
