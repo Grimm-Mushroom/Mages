@@ -3,19 +3,22 @@ using System.Collections;
 
 public class Platform : MonoBehaviour {
 
-	public int owner;
-	public Beacon MyBeacon;
+	public Player owner;
 
-	public void changeOwner(int own) {
-		owner = own;
+	public Beacon beacon;
+
+	public void setBeacon(Beacon beacon) {
+		this.beacon = beacon;
+	}
+
+	public void changeOwner(Player owner) {
+		this.owner = owner;
 		__changeOwnerAnim (); 
 	}
 
 	private void __changeOwnerAnim() {
-		renderer.material.color = MyBeacon.renderer.material.color;
+		renderer.material.color = beacon.renderer.material.color;
 	}
-
-
 
 
 }
