@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Platform : MonoBehaviour {
 
+	public int resA = 1, resB = 2, resC = 3, resD = 4;
+
+	public Resources resources;
+
 	public Player owner;
 
 	public Beacon beacon;
@@ -19,6 +23,5 @@ public class Platform : MonoBehaviour {
 	private void __changeOwnerAnim() {
 		renderer.material.color = beacon.renderer.material.color;
 	}
-
 
 }

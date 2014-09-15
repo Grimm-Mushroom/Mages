@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Beacon : MonoBehaviour {
 
+	public int resA = 1, resB = 2, resC = 3, resD = 4;
+
 	// current owner
 	public Player owner;
 
