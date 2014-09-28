@@ -46,6 +46,21 @@ public class Beacon : MonoBehaviour {
 		}
 	}
 
+	void SpawnCreature() {
+		if (owner.creatureTypes.Length > 0) {
+
+			Instantiate(
+				owner.creatureTypes[0], 
+				new Vector3(
+					transform.position.x,
+					collider.bounds.size.y + transform.position.y + 0.5f,
+					transform.position.z
+				),
+				Quaternion.identity);
+		}
+	}
+
+
 	void Start () {
 		// assign owner to platforms
 		__changeOwner(owner);
@@ -54,14 +69,14 @@ public class Beacon : MonoBehaviour {
 
 
 	void Update () {
-		if (Input.GetMouseButtonDown (0)) {		
+		if (Input.GetMouseButton(0)) {		
 			RaycastHit _hit;
 			Ray _ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
 			if (Physics.Raycast(_ray, out _hit, 1000.0f)) {
 				if (_hit.collider.gameObject == gameObject) {
 					if(owner == nobody) {
 						__changeOwner(player);
-					} else {
+					} else if(owner == player)  {
 						__changeOwner(nobody);
 					}
 					__checkEnd();

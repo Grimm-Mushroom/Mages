@@ -6,6 +6,8 @@ public class Player : MonoBehaviour {
 
 	public Color color;
 
+	public Transform[] creatureTypes;
+
 	public IList<Beacon> beacons = new List<Beacon>();
 
 	void Start () {
@@ -13,7 +15,7 @@ public class Player : MonoBehaviour {
 	}
 	
 	void Update () {
-	
+
 	}
 
 }

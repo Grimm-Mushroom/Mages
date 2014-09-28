@@ -12,7 +12,14 @@ public class GuiData : MonoBehaviour {
 	}
 	
 	void Update () {
-	
+		//создание существа по клику
+		if (Input.GetMouseButtonDown (0)) {	
+			RaycastHit _hit;
+			Ray _ray = UnityEngine.Camera.main.ScreenPointToRay (Input.mousePosition);
+			if (Physics.Raycast (_ray, out _hit, 1000.0f)) {
+				_hit.collider.gameObject.SendMessage("SpawnCreature", null, SendMessageOptions.DontRequireReceiver);
+			}
+		}
 	}
 
 	private void __process() {
