@@ -1,23 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Beacon : MonoBehaviour {
+public class Beacon : MonoBehaviour, ICastable {
 
 	public int resA = 1, resB = 2, resC = 3, resD = 4;
 
 	// current owner
 	public Player owner;
 
-	// injection of possible owners
-	public Player player, enemy, nobody;
-
 	// related platforms
 	public Platform[] platforms; 
 	 
-	private void __changeOwner(Player owner) {
+	public void ChangeOwner(Player owner) {
 
 		// remove beacon from previous owner
-		this.owner.beacons.Remove(this);
+		if (this.owner != null) {
+			this.owner.beacons.Remove(this);
+		}
 
 		// assign new owner
 		this.owner = owner;
@@ -36,8 +35,8 @@ public class Beacon : MonoBehaviour {
 		renderer.material.color = owner.color;
 	}
 
-	private void __checkEnd() {
-		if ((tag == "Finish Beacon") && (owner == player)) {
+	public void checkEnd() {
+		if ((tag == "Finish Beacon") && (owner == PlayerManager.Instance.player)) {
 			if (Application.loadedLevel + 1 != Application.levelCount) {
 				Application.LoadLevel(Application.loadedLevel + 1);
 			} else {
@@ -46,44 +45,32 @@ public class Beacon : MonoBehaviour {
 		}
 	}
 
-	void SpawnCreature() {
-		if (owner.creatureTypes.Length > 0) {
-
-			Instantiate(
-				owner.creatureTypes[0], 
-				new Vector3(
-					transform.position.x,
-					collider.bounds.size.y + transform.position.y + 0.5f,
-					transform.position.z
-				),
-				Quaternion.identity);
-		}
-	}
-
-
 	void Start () {
-		// assign owner to platforms
-		__changeOwner(owner);
+		ChangeOwner (PlayerManager.Instance.nobody);
 	}
 
-
-
-	void Update () {
-		if (Input.GetMouseButton(0)) {		
-			RaycastHit _hit;
-			Ray _ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
-			if (Physics.Raycast(_ray, out _hit, 1000.0f)) {
-				if (_hit.collider.gameObject == gameObject) {
-					if(owner == nobody) {
-						__changeOwner(player);
-					} else if(owner == player)  {
-						__changeOwner(nobody);
-					}
-					__checkEnd();
-				}
-			}
-		}
+	void OnMouseUpAsButton () {
+		SpellManager.Instance.spellProcessor.cast (this);
 	}
 
+	void OnMouseEnter () {
+		SpellManager.Instance.spellProcessor.allocate (this);
+	}
+
+	void OnMouseExit () {
+		SpellManager.Instance.spellProcessor.deallocate (this);
+	}
+
+	public void cast (ISpell action) {
+		action.cast (this);
+	}
+
+	public void allocate (ISpell action) {
+		action.allocate (this);
+	}
+
+	public void deallocate (ISpell action) {
+		action.deallocate (this);
+	}
 
 }
