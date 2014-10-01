@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SpawnCreatureSpell : ISpell {
 
-	public void allocate(MonoBehaviour target) {
+	public void allocate(AbstractCastable target) {
 
 		Beacon beacon = (Beacon) target;
 		
@@ -11,7 +11,7 @@ public class SpawnCreatureSpell : ISpell {
 
 	}
 	
-	public void deallocate(MonoBehaviour target) {
+	public void deallocate(AbstractCastable target) {
 	
 		Beacon beacon = (Beacon) target;
 		
@@ -19,7 +19,7 @@ public class SpawnCreatureSpell : ISpell {
 	
 	}
 	
-	public void cast(MonoBehaviour target) {
+	public void cast(AbstractCastable target) {
 		
 		Beacon beacon = (Beacon) target;
 		

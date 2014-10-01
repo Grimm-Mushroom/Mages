@@ -42,7 +42,7 @@ public class GuiData : MonoBehaviour {
 
 
 		if (GUI.Button (new Rect (90, 10, 100, 20), "Capture")) {
-			SpellManager.INSTANCE.spellProcessor = captureBeaconSpellProcessor;	
+			SpellManager.INSTANCE.spellProcessor = captureSpellProcessor;	
 		}
 		if (GUI.Button (new Rect (210, 10, 100, 20), "Spawn")) {
 			SpellManager.INSTANCE.spellProcessor = spawnCreatureSpellProcessor;	
@@ -50,7 +50,7 @@ public class GuiData : MonoBehaviour {
 
 	}
 
-	private ISpellProcessor captureBeaconSpellProcessor = new CaptureBeaconSpellProcessor();
+	private ISpellProcessor captureSpellProcessor = new CaptureSpellProcessor();
 	private ISpellProcessor spawnCreatureSpellProcessor = new SpawnCreatureSpellProcessor();
 
 }

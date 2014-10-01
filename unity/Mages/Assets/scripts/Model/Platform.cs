@@ -17,7 +17,7 @@ public class Platform : Building {
 	}
 
 	private void changeOwnerAnim() {
-		renderer.material.color = beacon.renderer.material.color;
+		renderer.material.color = owner.color;
 	}
 
 }

@@ -55,10 +55,9 @@
      <Compile Include="Assets\scripts\PlayerManager.cs" />
      <Compile Include="Assets\scripts\Samuray.cs" />
      <Compile Include="Assets\scripts\Spell\AbstractCastable.cs" />
-     <Compile Include="Assets\scripts\Spell\CaptureBeaconSpell.cs" />
-     <Compile Include="Assets\scripts\Spell\CaptureBeaconSpellProcessor.cs" />
+     <Compile Include="Assets\scripts\Spell\CaptureSpell.cs" />
+     <Compile Include="Assets\scripts\Spell\CaptureSpellProcessor.cs" />
      <Compile Include="Assets\scripts\Spell\EmptySpellProcessor.cs" />
-     <Compile Include="Assets\scripts\Spell\ICastable.cs" />
      <Compile Include="Assets\scripts\Spell\ISpell.cs" />
      <Compile Include="Assets\scripts\Spell\ISpellProcessor.cs" />
      <Compile Include="Assets\scripts\Spell\SpawnCreatureSpell.cs" />

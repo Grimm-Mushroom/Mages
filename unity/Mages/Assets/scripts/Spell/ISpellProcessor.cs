@@ -3,10 +3,12 @@ using System.Collections;
 
 public interface ISpellProcessor {
 
-	void allocate(ICastable target);
+	bool isValid(AbstractCastable target);
 
-	void deallocate(ICastable target);
+	void allocate(AbstractCastable target);
 
-	void cast(ICastable target);
+	void deallocate(AbstractCastable target);
+
+	void cast(AbstractCastable target);
 
 }

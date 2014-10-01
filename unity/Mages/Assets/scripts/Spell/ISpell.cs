@@ -3,10 +3,10 @@ using System.Collections;
 
 public interface ISpell {
 
-	void allocate(MonoBehaviour target);
+	void allocate(AbstractCastable target);
 
-	void deallocate(MonoBehaviour target);
+	void deallocate(AbstractCastable target);
 
-	void cast(MonoBehaviour target);
+	void cast(AbstractCastable target);
 
 }

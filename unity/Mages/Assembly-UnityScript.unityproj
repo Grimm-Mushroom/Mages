@@ -39,14 +39,14 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>F:/Tools/Unity3d/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>D:/DevTools/Unity3d/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>F:/Tools/Unity3d/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>D:/DevTools/Unity3d/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\PlayerManager.js" />
+     <Compile Include="Assets\scripts\Spell\Demo.js" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

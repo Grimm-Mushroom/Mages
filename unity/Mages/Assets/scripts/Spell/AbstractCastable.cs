@@ -1,30 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class AbstractCastable : MonoBehaviour, ICastable {
+public abstract class AbstractCastable : MonoBehaviour {
 
 	void OnMouseUpAsButton() {
-		SpellManager.INSTANCE.spellProcessor.cast(this);
+		ISpellProcessor spellProcessor = SpellManager.INSTANCE.spellProcessor;
+		if (spellProcessor.isValid(this)) {
+			spellProcessor.cast(this);
+		}
 	}
 	
 	void OnMouseEnter() {
-		SpellManager.INSTANCE.spellProcessor.allocate(this);
+		ISpellProcessor spellProcessor = SpellManager.INSTANCE.spellProcessor;
+		if (spellProcessor.isValid(this)) {
+			spellProcessor.allocate(this);
+		}
 	}
 	
 	void OnMouseExit() {
-		SpellManager.INSTANCE.spellProcessor.deallocate(this);
-	}
-	
-	public void cast(ISpell spell) {
-		spell.cast(this);
-	}
-	
-	public void allocate(ISpell spell) {
-		spell.allocate(this);
-	}
-	
-	public void deallocate(ISpell spell) {
-		spell.deallocate(this);
+		ISpellProcessor spellProcessor = SpellManager.INSTANCE.spellProcessor;
+		if (spellProcessor.isValid(this)) {
+			spellProcessor.deallocate(this);
+		}
 	}
 
 }

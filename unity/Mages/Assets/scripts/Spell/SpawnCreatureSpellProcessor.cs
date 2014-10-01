@@ -4,25 +4,22 @@ using System.Collections;
 public class SpawnCreatureSpellProcessor : ISpellProcessor {
 
 	private ISpell spawnCreatureSpell = new SpawnCreatureSpell();
-	
-	public void allocate(ICastable target) {
-		if (target is Beacon) {
-			target.allocate(spawnCreatureSpell);
-		}
 
+	public bool isValid(AbstractCastable target) {
+		return target is Beacon;
 	}
 	
-	public void deallocate(ICastable target) {
-		if (target is Beacon) {
-			target.deallocate(spawnCreatureSpell);
-		}
+	public void allocate(AbstractCastable target) {
+		spawnCreatureSpell.allocate(target);
 	}
 	
-	public void cast(ICastable target) {
-		if (target is Beacon) {
-			target.cast(spawnCreatureSpell);
-			target.deallocate(spawnCreatureSpell);
-		}
+	public void deallocate(AbstractCastable target) {
+		spawnCreatureSpell.deallocate(target);
+	}
+	
+	public void cast(AbstractCastable target) {
+		spawnCreatureSpell.cast(target);
+		spawnCreatureSpell.deallocate(target);
 
 		SpellManager.INSTANCE.refresh();
 		

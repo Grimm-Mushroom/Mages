@@ -3,16 +3,14 @@ using System.Collections;
 
 public class EmptySpellProcessor : ISpellProcessor {
 
-	public void allocate(ICastable target) {
-
+	public bool isValid(AbstractCastable target) {
+		return false;
 	}
 
-	public void deallocate(ICastable target) {
-		
-	}
+	public void allocate(AbstractCastable target) { }
 
-	public void cast(ICastable target) {
+	public void deallocate(AbstractCastable target) { }
 
-	}
+	public void cast(AbstractCastable target) { }
 
 }
