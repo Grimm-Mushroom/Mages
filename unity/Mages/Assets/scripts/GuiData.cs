@@ -1,18 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GuiData : MonoBehaviour {
 
 	public int resA, resB, resC, resD;
 
-	void Start () {
-		InvokeRepeating("__process", 5.0f, 5.0f);
+	void Start() {
+		InvokeRepeating("process", 5.0f, 5.0f);
 	}
 
-	private void __process() {
+	private void process() {
 		int tempResA = 0, tempResB = 0, tempResC = 0, tempResD = 0;
 
-		foreach (Beacon beacon in PlayerManager.Instance.player.beacons) {
+		foreach (Beacon beacon in PlayerManager.INSTANCE.player.beacons) {
 			tempResA += beacon.resA;
 			tempResB += beacon.resB;
 			tempResC += beacon.resC;
@@ -33,22 +34,23 @@ public class GuiData : MonoBehaviour {
 
 	}
 
-	void OnGUI () {
+	void OnGUI() {
 		GUI.Label (new Rect (10, 10, 100, 20), resA.ToString());
 		GUI.Label (new Rect (30, 10, 100, 20), resB.ToString());
 		GUI.Label (new Rect (50, 10, 100, 20), resC.ToString());
 		GUI.Label (new Rect (70, 10, 100, 20), resD.ToString());
 
+
 		if (GUI.Button (new Rect (90, 10, 100, 20), "Capture")) {
-			SpellManager.Instance.spellProcessor = captureBeaconSpellProcessor;	
+			SpellManager.INSTANCE.spellProcessor = captureBeaconSpellProcessor;	
 		}
 		if (GUI.Button (new Rect (210, 10, 100, 20), "Spawn")) {
-			SpellManager.Instance.spellProcessor = spawnCreatureSpellProcessor;	
+			SpellManager.INSTANCE.spellProcessor = spawnCreatureSpellProcessor;	
 		}
 
 	}
 
-	private ISpellProcessor captureBeaconSpellProcessor = new CaptureBeaconSpellProcessor ();
-	private ISpellProcessor spawnCreatureSpellProcessor = new SpawnCreatureSpellProcessor ();
+	private ISpellProcessor captureBeaconSpellProcessor = new CaptureBeaconSpellProcessor();
+	private ISpellProcessor spawnCreatureSpellProcessor = new SpawnCreatureSpellProcessor();
 
 }

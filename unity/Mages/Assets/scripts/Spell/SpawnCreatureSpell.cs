@@ -5,7 +5,7 @@ public class SpawnCreatureSpell : ISpell {
 
 	public void allocate(MonoBehaviour target) {
 
-		Beacon beacon = (Beacon)target;
+		Beacon beacon = (Beacon) target;
 		
 		beacon.renderer.material.color = Color.blue;
 
@@ -13,7 +13,7 @@ public class SpawnCreatureSpell : ISpell {
 	
 	public void deallocate(MonoBehaviour target) {
 	
-		Beacon beacon = (Beacon)target;
+		Beacon beacon = (Beacon) target;
 		
 		beacon.renderer.material.color = beacon.owner.color;
 	
@@ -21,7 +21,7 @@ public class SpawnCreatureSpell : ISpell {
 	
 	public void cast(MonoBehaviour target) {
 		
-		Beacon beacon = (Beacon)target;
+		Beacon beacon = (Beacon) target;
 		
 		Beacon.Instantiate(
 			beacon.owner.creatureTypes[0], 

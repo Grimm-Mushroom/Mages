@@ -10,12 +10,4 @@ public class Player : MonoBehaviour {
 
 	public IList<Beacon> beacons = new List<Beacon>();
 
-	void Start () {
-
-	}
-	
-	void Update () {
-
-	}
-
 }

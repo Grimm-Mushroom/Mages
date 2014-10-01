@@ -3,14 +3,14 @@ using System.Collections;
 
 public class PlayerManager : MonoBehaviour {
 
-	private static PlayerManager _instance;
+	private static PlayerManager instance;
 	
-	public static PlayerManager Instance {
+	public static PlayerManager INSTANCE {
 		get {
-			if (_instance == null) {
-				_instance = GameObject.FindObjectOfType<PlayerManager>();;
+			if (instance == null) {
+				instance = GameObject.FindObjectOfType<PlayerManager>();;
 			}
-			return _instance;
+			return instance;
 		} 
 	}
 

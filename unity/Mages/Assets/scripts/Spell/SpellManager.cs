@@ -3,18 +3,18 @@ using System.Collections;
 
 public class SpellManager : MonoBehaviour {
 	
-	private static SpellManager _instance;
+	private static SpellManager instance;
 
-	public static SpellManager Instance {
+	public static SpellManager INSTANCE {
 		get {
-			if (_instance == null) {
-				_instance = GameObject.FindObjectOfType<SpellManager>();;
+			if (instance == null) {
+				instance = GameObject.FindObjectOfType<SpellManager>();;
 			}
-			return _instance;
+			return instance;
 		} 
 	}
 
-	public readonly static ISpellProcessor emptySpellProcessor = new EmptySpellProcessor ();
+	public readonly static ISpellProcessor emptySpellProcessor = new EmptySpellProcessor();
 
 	public ISpellProcessor spellProcessor = emptySpellProcessor;
 		

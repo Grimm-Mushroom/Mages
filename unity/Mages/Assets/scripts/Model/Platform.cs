@@ -1,13 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Platform : MonoBehaviour {
+public class Platform : Building {
 
 	public int resA = 1, resB = 2, resC = 3, resD = 4;
-
-	public Resources resources;
-
-	public Player owner;
 
 	public Beacon beacon;
 
@@ -15,12 +11,12 @@ public class Platform : MonoBehaviour {
 		this.beacon = beacon;
 	}
 
-	public void changeOwner(Player owner) {
+	override public void changeOwner(Player owner) {
 		this.owner = owner;
-		__changeOwnerAnim (); 
+		changeOwnerAnim (); 
 	}
 
-	private void __changeOwnerAnim() {
+	private void changeOwnerAnim() {
 		renderer.material.color = beacon.renderer.material.color;
 	}
 
