@@ -8,6 +8,10 @@ public class MoveState: AbstractState {
 	}
 
 	public override bool isFinish() {
+		if (target != null && target.owner == __creature.owner) {
+			target = null;
+			__creature.agent.ResetPath();
+		}
 		return target == null || Vector3.Distance (__creature.agent.destination, __creature._transform.position) < 0.6f;
 	}
 
@@ -25,30 +29,15 @@ public class MoveState: AbstractState {
 		}
 	}
 
-	private float pathLength(NavMeshPath path) {
-		if (path.corners.Length < 2)
-			return -1;
-		
-		Vector3 previousCorner = path.corners[0];
-		float lengthSoFar = 0.0F;
-		int i = 1;
-		while (i < path.corners.Length) {
-			Vector3 currentCorner = path.corners[i];
-			lengthSoFar += Vector3.Distance(previousCorner, currentCorner);
-			previousCorner = currentCorner;
-			i++;
-		}
-		return lengthSoFar;
-	}
 	
 	private Beacon __findNextBeacon() {
 		Beacon minBeacon = null;
 		float minLegth = -1;
 		NavMeshPath path = new NavMeshPath();
 
-		foreach (Beacon beacon in PlayerManager.INSTANCE.player.beacons) {
+		foreach (Beacon beacon in __creature.enemy.beacons) {
 			__creature.agent.CalculatePath(beacon.transform.position, path);
-			float len = pathLength(path);
+			float len = __creature.pathLength(path);
 			if (len > -1 && minLegth > len || minLegth == -1) {
 				minBeacon = beacon;
 				minLegth = len;

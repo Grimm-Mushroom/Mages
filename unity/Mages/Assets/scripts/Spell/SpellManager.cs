@@ -22,4 +22,6 @@ public class SpellManager : MonoBehaviour {
 	public void refresh() {
 		spellProcessor = emptySpellProcessor;
 	}
+
+	public Transform[] creatureTypes;
 }

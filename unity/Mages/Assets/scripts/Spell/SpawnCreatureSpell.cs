@@ -22,16 +22,18 @@ public class SpawnCreatureSpell : ISpell {
 	public void cast(AbstractCastable target) {
 		
 		Beacon beacon = (Beacon) target;
-		
-		Beacon.Instantiate(
-			beacon.owner.creatureTypes[0], 
+		Transform creature = Beacon.Instantiate(
+			SpellManager.INSTANCE.creatureTypes[0], 
 			new Vector3(
-			beacon.transform.position.x,
-			beacon.collider.bounds.size.y + beacon.transform.position.y + 0.5f,
-			beacon.transform.position.z
+				beacon.transform.position.x,
+				beacon.collider.bounds.size.y + beacon.transform.position.y + 0.5f,
+				beacon.transform.position.z
 			),
-			Quaternion.identity);
-		
+			Quaternion.identity
+		) as Transform;
+
+		creature.GetComponent<BasicCreature>().owner = PlayerManager.INSTANCE.enemy;
+		creature.GetComponent<BasicCreature>().enemy = PlayerManager.INSTANCE.player;
 	}
 
 }
