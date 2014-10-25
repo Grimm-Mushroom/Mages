@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class BasicCreature : MonoBehaviour {
+public class BasicCreature : AbstractCastable {
+
 	public NavMeshAgent agent;
 	public Transform _transform;
-	public Player owner, enemy;
 
 	public float captureTime = 3.0f;
 
 	void Start() {
+
 		agent = gameObject.GetComponent<NavMeshAgent> ();	
 		_transform = gameObject.GetComponent<Transform> ();	
 
@@ -31,4 +33,14 @@ public class BasicCreature : MonoBehaviour {
 		}
 		return lengthSoFar;
 	}
+
+	override public void changeOwner(Player player) {
+		this.owner = player;
+		changeOwnerAnim (player);
+	}
+
+	private void changeOwnerAnim(Player owner) {
+		renderer.material.color = owner.color;
+	}
+
 }

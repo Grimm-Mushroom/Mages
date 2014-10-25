@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class AbstractCastable : MonoBehaviour {
+public abstract class AbstractCastable : AbstractInteractive {
 
 	void OnMouseUpAsButton() {
 		ISpellProcessor spellProcessor = SpellManager.INSTANCE.spellProcessor;

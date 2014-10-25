@@ -47,10 +47,19 @@ public class GuiData : MonoBehaviour {
 		if (GUI.Button (new Rect (210, 10, 100, 20), "Spawn")) {
 			SpellManager.INSTANCE.spellProcessor = spawnCreatureSpellProcessor;	
 		}
+		if (GUI.Button (new Rect (330, 10, 100, 20), "+ Armor")) {
+			SpellManager.INSTANCE.spellProcessor = plusArmorSpellProcessor;	
+		}
+		if (GUI.Button (new Rect (450, 10, 100, 20), "- Armor")) {
+			SpellManager.INSTANCE.spellProcessor = minusArmorSpellProcessor;	
+		}
 
 	}
 
 	private ISpellProcessor captureSpellProcessor = new CaptureSpellProcessor();
 	private ISpellProcessor spawnCreatureSpellProcessor = new SpawnCreatureSpellProcessor();
+
+	private ISpellProcessor plusArmorSpellProcessor = new PlusArmorSpellProcessor();
+	private ISpellProcessor minusArmorSpellProcessor = new MinusArmorSpellProcessor();
 
 }

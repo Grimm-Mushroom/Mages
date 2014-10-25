@@ -35,7 +35,7 @@ public class MoveState: AbstractState {
 		float minLegth = -1;
 		NavMeshPath path = new NavMeshPath();
 
-		foreach (Beacon beacon in __creature.enemy.beacons) {
+		foreach (Beacon beacon in PlayerManager.INSTANCE.player.beacons) {
 			__creature.agent.CalculatePath(beacon.transform.position, path);
 			float len = __creature.pathLength(path);
 			if (len > -1 && minLegth > len || minLegth == -1) {
