@@ -26,6 +26,7 @@ public class Beacon : Building {
 			platform.setBeacon(this);
 			platform.changeOwner(owner);
 		}
+		checkEnd ();
 	}
 
 	private void changeOwnerAnim(Player owner) {
@@ -40,10 +41,21 @@ public class Beacon : Building {
 				Application.LoadLevel(0);
 			}
 		}
+		if (PlayerManager.INSTANCE.player.beacons.Count == 0) {
+			Debug.Log("Black lord own You");
+			Application.LoadLevel(0);
+		}
 	}
 
 	void Start () {
-		changeOwner(PlayerManager.INSTANCE.nobody);
+		this.owner.beacons.Add(this);
+
+		changeOwnerAnim(this.owner);
+		foreach (Platform platform in platforms) {
+			platform.setBeacon(this);
+			platform.changeOwner(this.owner);
+		}
+		//changeOwner(PlayerManager.INSTANCE.nobody);
 	}
 
 }

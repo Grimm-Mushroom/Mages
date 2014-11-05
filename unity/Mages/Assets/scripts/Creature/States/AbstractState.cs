@@ -2,8 +2,8 @@
 using System.Collections;
 
 public abstract class AbstractState {
-	private Building __target;
-	public Building target {
+	private AbstractInteractive __target;
+	public AbstractInteractive target {
 		get {
 			return __target;
 		}
@@ -30,7 +30,7 @@ public abstract class AbstractState {
 
 	public abstract bool isFinish();
 
-	public virtual void onStartState(Building stateTarget) {
+	public virtual void onStartState(AbstractInteractive stateTarget) {
 		target = stateTarget;
 	}
 

@@ -5,28 +5,28 @@ public class CaptureSpell : ISpell {
 
 	public void allocate(AbstractCastable target) {
 	
-		Building beacon = (Building) target;
+		//Building beacon = (Building) target;
 
-		beacon.renderer.material.color = Color.blue;
+		target.renderer.material.color = Color.blue;
 
 	}
 
 	public void deallocate(AbstractCastable target) {
 		
-		Building beacon = (Building) target;
+		//Building beacon = (Building) target;
 
-		beacon.renderer.material.color = beacon.owner.color;
+		target.renderer.material.color = target.owner.color;
 		
 	}
 
 	public void cast(AbstractCastable target) {
 
-		Building building = (Building) target;
+		//Building building = (Building) target;
 
-		if (building.owner == PlayerManager.INSTANCE.nobody) {
-			building.changeOwner(PlayerManager.INSTANCE.player);
+		if (target.owner == PlayerManager.INSTANCE.nobody) {
+			target.changeOwner(PlayerManager.INSTANCE.player);
 		} else {
-			building.changeOwner(PlayerManager.INSTANCE.nobody);
+			target.changeOwner(PlayerManager.INSTANCE.nobody);
 		}
 
 

@@ -2,42 +2,49 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class BasicCreatureAI : MonoBehaviour {
+public class BasicCreatureAI : AbstractCreatureAI {
 
-	private Dictionary<string, AbstractState> __allStates;
-	private AbstractState __state;
-	private BasicCreature __creature;
-	private Building __target;
-	private bool init;
+	public override void init() {
+		base.init();
+		AbstractState captureState = new CaptureState (_creature);
+		this.addState (captureState);
 
+		AbstractState deafState = new DeafState (_creature);
+		this.addState (deafState);
 
-	
-	public void Init() {
-		__creature = GetComponent<BasicCreature> ();
-		__allStates = new Dictionary<string, AbstractState> ();
-		__allStates.Add ("Capture", new CaptureState (__creature));
-		__allStates.Add ("Move", new MoveState (__creature));
+		AbstractState moveState = new MoveState (_creature);
+		this.addState (moveState, true);
 
-		__state = __allStates["Move"];
-		__state.onStartState(__target);
-		__target = __state.target;
-		init = true;
+		AbstractState combatState = new CombatState (_creature);
+		this.addState (combatState);
+
+		_init = true;
 	}
 
-	void Update() {
-		if (init && __state.isFinish()) {
-			__state.onFinishState();
-			if (__state.stateName == "Move") {
-				if (__state.target != null){
-					__state = __allStates["Capture"];
-				} 
-			} else if (__state.stateName == "Capture") {
-				__state = __allStates["Move"];
-			}
-			__state.onStartState(__target);
-			__target = __state.target;
+	public override void changeState(string stateName) {
+		if (_state.stateName == "Move") {
+			_creature.agent.Stop();
+		}
+		base.changeState (stateName);
+	}
+
+	protected override void setNewState() {
+		if (_state.stateName == "Move") {
+			if (_state.target != null){
+				_state = _allStates["Capture"];
+			} 
+		} else if (_state.stateName == "Capture") {
+			_state = _allStates["Move"];
 		}
 	}
 
-
+	void OnTriggerEnter(Collider other) {
+		BasicCreature enemyCreature = other.GetComponent<BasicCreature>();
+		if (enemyCreature != null && _creature.owner != enemyCreature.owner) {
+			_target = enemyCreature;
+			if (_state.stateName != "Combat") {
+				this.changeState ("Combat");
+			}
+		}
+	}
 }

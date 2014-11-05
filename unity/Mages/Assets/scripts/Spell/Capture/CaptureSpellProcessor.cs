@@ -6,7 +6,7 @@ public class CaptureSpellProcessor : ISpellProcessor {
 	private ISpell captureSpell = new CaptureSpell();
 
 	public bool isValid(AbstractCastable target) {
-		return target is Building;
+		return target is AbstractInteractive;
 	}
 
 	public void allocate(AbstractCastable target) {

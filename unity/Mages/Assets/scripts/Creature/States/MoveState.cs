@@ -15,7 +15,7 @@ public class MoveState: AbstractState {
 		return target == null || Vector3.Distance (__creature.agent.destination, __creature._transform.position) < 0.6f;
 	}
 
-	public override void onStartState(Building stateTarget){
+	public override void onStartState(AbstractInteractive stateTarget){
 		//Найти ближайший маяк и передать его в target	
 		target = __findNextBeacon ();
 		if(target != null) {
@@ -34,8 +34,14 @@ public class MoveState: AbstractState {
 		Beacon minBeacon = null;
 		float minLegth = -1;
 		NavMeshPath path = new NavMeshPath();
+		Player enemy;
+		if (__creature.owner == PlayerManager.INSTANCE.player) {
+			enemy = PlayerManager.INSTANCE.enemy;
+		} else {
+			enemy = PlayerManager.INSTANCE.player;
+		}
 
-		foreach (Beacon beacon in PlayerManager.INSTANCE.player.beacons) {
+		foreach (Beacon beacon in enemy.beacons) {
 			__creature.agent.CalculatePath(beacon.transform.position, path);
 			float len = __creature.pathLength(path);
 			if (len > -1 && minLegth > len || minLegth == -1) {

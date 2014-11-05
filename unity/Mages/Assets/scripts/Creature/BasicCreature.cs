@@ -2,20 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class BasicCreature : AbstractCastable {
+public class BasicCreature : AbstractDamageable {
 
 	public NavMeshAgent agent;
 	public Transform _transform;
+	public GameObject creatureObject;
+	public AbstractCreatureAI creatureAI;
 
-	public float captureTime = 3.0f;
 
 	void Start() {
 
 		agent = gameObject.GetComponent<NavMeshAgent> ();	
 		_transform = gameObject.GetComponent<Transform> ();	
-
-		BasicCreatureAI ai = GetComponent<BasicCreatureAI> ();
-		ai.Init ();
+		creatureObject = gameObject;
+		creatureAI = GetComponent<BasicCreatureAI> ();
+		creatureAI.init ();
 	}
 
 	public float pathLength(NavMeshPath path) {
