@@ -8,18 +8,18 @@ public class CaptureState: AbstractState {
 	}
 
 	public override bool isFinish() {
-		return __creature.owner == target.owner;
+		return _creature.owner == target.owner;
 	}
 
 	public override void onStartState(AbstractInteractive stateTarget){
 		base.onStartState (stateTarget);
 		// запустить this.__captureBuilding через _creature.captureTime сек. 
 		Timer.Instance.StartCoroutine(Timer.Instance.TimerStart(
-			__creature.propertyConfig.captureTime.basic, __captureBuilding)
+			_creature.propertyConfig.captureTime.basic, __captureBuilding)
 		);
 	}
 
 	private void  __captureBuilding() {
-		target.changeOwner (__creature.owner);
+		target.changeOwner (_creature.owner);
 	}
 }

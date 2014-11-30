@@ -8,18 +8,18 @@ public class MoveState: AbstractState {
 	}
 
 	public override bool isFinish() {
-		if (target != null && target.owner == __creature.owner) {
+		if (target != null && target.owner == _creature.owner) {
 			target = null;
-			__creature.agent.ResetPath();
+			_creature.agent.ResetPath();
 		}
-		return target == null || Vector3.Distance (__creature.agent.destination, __creature._transform.position) < 0.6f;
+		return target == null || Vector3.Distance (_creature.agent.destination, _creature._transform.position) < 0.6f;
 	}
 
 	public override void onStartState(AbstractInteractive stateTarget){
 		//Найти ближайший маяк и передать его в target	
 		target = __findNextBeacon ();
 		if(target != null) {
-			__creature.agent.SetDestination(
+			_creature.agent.SetDestination(
 				new Vector3(
 				target.transform.position.x,
 				target.collider.bounds.size.y + target.transform.position.y,
@@ -35,15 +35,15 @@ public class MoveState: AbstractState {
 		float minLegth = -1;
 		NavMeshPath path = new NavMeshPath();
 		Player enemy;
-		if (__creature.owner == PlayerManager.INSTANCE.player) {
+		if (_creature.owner == PlayerManager.INSTANCE.player) {
 			enemy = PlayerManager.INSTANCE.enemy;
 		} else {
 			enemy = PlayerManager.INSTANCE.player;
 		}
 
 		foreach (Beacon beacon in enemy.beacons) {
-			__creature.agent.CalculatePath(beacon.transform.position, path);
-			float len = __creature.pathLength(path);
+			_creature.agent.CalculatePath(beacon.transform.position, path);
+			float len = _creature.pathLength(path);
 			if (len > -1 && minLegth > len || minLegth == -1) {
 				minBeacon = beacon;
 				minLegth = len;

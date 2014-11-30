@@ -33,7 +33,7 @@ public class BasicCreatureAI : AbstractCreatureAI {
 			if (_state.target != null){
 				_state = _allStates["Capture"];
 			} 
-		} else if (_state.stateName == "Capture") {
+		} else {
 			_state = _allStates["Move"];
 		}
 	}

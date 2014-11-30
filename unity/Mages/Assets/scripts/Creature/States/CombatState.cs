@@ -17,18 +17,20 @@ public class CombatState: AbstractState {
 		base.onStartState (stateTarget);
 		// запустить this.__captureBuilding через _creature.captureTime сек. 
 		Timer.Instance.StartCoroutine(
-			Timer.Instance.TimerStart(__creature.propertyConfig.attackTime.basic, __attackTarget)
+			Timer.Instance.TimerStart(_creature.propertyConfig.attackTime.basic, __attackTarget)
 		);
 	}
 
 	private void  __attackTarget() {
 		BasicCreature enemy = (BasicCreature)target;
-		if (enemy.takeDamage (__creature.propertyConfig.damage.getCurrent ())) {
-			Timer.Instance.StartCoroutine(
-				Timer.Instance.TimerStart(__creature.propertyConfig.attackTime.basic, __attackTarget)
-			);
-		} else {
-			enemy.creatureAI.changeState("Deaf");
+		if (_creature.creatureAI.getState ().stateName == stateName) {
+				if (enemy.takeDamage (_creature.propertyConfig.damage.getCurrent ())) {
+						Timer.Instance.StartCoroutine (
+			Timer.Instance.TimerStart (_creature.propertyConfig.attackTime.basic, __attackTarget)
+						);
+				} else {
+						enemy.creatureAI.changeState ("Deaf");
+				}
 		}
 	}
 }

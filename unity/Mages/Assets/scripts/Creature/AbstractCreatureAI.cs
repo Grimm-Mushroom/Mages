@@ -42,7 +42,7 @@ public abstract class AbstractCreatureAI : MonoBehaviour {
 	//определение следующего состояния
 	protected abstract void setNewState ();
 
-	void Update() {
+	void FixedUpdate () {
 		if (_init && _state.isFinish()) {
 			_state.onFinishState();
 			setNewState();

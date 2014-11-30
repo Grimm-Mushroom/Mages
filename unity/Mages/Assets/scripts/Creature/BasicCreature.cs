@@ -11,7 +11,13 @@ public class BasicCreature : AbstractDamageable {
 
 
 	void Start() {
-
+		healthPoints = new HealthPoint[] {
+			new HealthPoint(50.0f),
+			new HealthPoint(50.0f),
+			new HealthPoint(50.0f),
+			new HealthPoint(50.0f),
+			new HealthPoint(50.0f)
+		};
 		agent = gameObject.GetComponent<NavMeshAgent> ();	
 		_transform = gameObject.GetComponent<Transform> ();	
 		creatureObject = gameObject;

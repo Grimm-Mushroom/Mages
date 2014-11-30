@@ -8,7 +8,7 @@ public class PlusArmor : IEffect {
 	public float amount = 5.0f;
 	
 	public float execute(AbstractInteractive target) {
-		return source.propertyConfig.armor.basic + amount;
+		return  + amount;
 	}
 
 	public EffectType getEffectType() {

@@ -22,10 +22,10 @@ public abstract class AbstractState {
 		}
 	}
 
-	protected BasicCreature __creature;
+	protected BasicCreature _creature;
 
 	public AbstractState(BasicCreature creature) {
-		__creature = creature;
+		_creature = creature;
 	}
 
 	public abstract bool isFinish();

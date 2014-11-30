@@ -14,6 +14,6 @@ public class DeafState: AbstractState {
 	public override void onStartState(AbstractInteractive stateTarget){
 		//Запустить анимацию смерти и уничтожать объект
 		target = null;
-		UnityEngine.Object.Destroy (__creature.creatureObject);
+		UnityEngine.Object.Destroy (_creature.creatureObject);
 	}
 }
