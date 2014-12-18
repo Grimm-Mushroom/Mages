@@ -22,8 +22,9 @@ public class MinusArmorSpell : ISpell {
 	public void cast(AbstractCastable target) {
 		
 		MinusArmor minus = new MinusArmor ();
-		minus.source = target;
-		target.addEffect (minus);
+		minus.bearer = target;
+		AbstractDamageable creature = (AbstractDamageable) target;
+		creature.addEffectToHealthPoint (minus);
 		
 	}
 	

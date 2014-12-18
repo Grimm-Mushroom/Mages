@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
 public class HealthPoint {
-
-
 
 	public bool status = true;
 
@@ -11,8 +10,12 @@ public class HealthPoint {
 		health = healthValue;
 	}
 
-	private IEffect __effect = null ;
-	public IEffect effect {
+	public bool mayGetEffect() {
+		return effect == null && status;
+	}
+
+	private AbstracteEffect __effect = null ;
+	public AbstracteEffect effect {
 		get {
 			return __effect;
 		}
@@ -23,6 +26,7 @@ public class HealthPoint {
 		}
 	}
 
+	[SerializeField]
 	private float __health;
 	public float health {
 		get {
@@ -31,9 +35,11 @@ public class HealthPoint {
 		set {
 			if (value <= 0) {
 				status = false;
+				if (__effect != null) {
+					__effect.onDie();
+				}
 			}
 			__health = value;
 		} 
 	}
-
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
 public class PropertyConfig {
 	
 	public Property damage 		= new Property (15.0f, 0.0f);

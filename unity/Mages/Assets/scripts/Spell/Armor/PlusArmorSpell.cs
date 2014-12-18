@@ -22,8 +22,9 @@ public class PlusArmorSpell : ISpell {
 	public void cast(AbstractCastable target) {
 
 		PlusArmor plus = new PlusArmor ();
-		plus.source = target;
-		target.addEffect (plus);
+		plus.bearer = target;
+		AbstractDamageable creature = (AbstractDamageable) target;
+		creature.addEffectToHealthPoint (plus);
 
 	}
 

@@ -6,7 +6,7 @@ public class PlusArmorSpellProcessor : ISpellProcessor {
 	private ISpell plusArmorSpell = new PlusArmorSpell();
 
 	public bool isValid(AbstractCastable target) {
-		return target is AbstractInteractive;
+		return target is AbstractDamageable;
 	}
 
 	public void allocate(AbstractCastable target) {

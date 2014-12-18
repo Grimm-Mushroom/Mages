@@ -6,45 +6,68 @@ public class BasicCreatureAI : AbstractCreatureAI {
 
 	public override void init() {
 		base.init();
-		AbstractState captureState = new CaptureState (_creature);
-		this.addState (captureState);
+		AbstractStrategy captureStrategy = new CaptureStrategy (_creature);
+		this.addState (captureStrategy);
 
-		AbstractState deafState = new DeafState (_creature);
-		this.addState (deafState);
+		AbstractStrategy deafStrategy = new DeafStrategy (_creature);
+		this.addState (deafStrategy);
 
-		AbstractState moveState = new MoveState (_creature);
-		this.addState (moveState, true);
+		AbstractStrategy moveStrategy = new MoveStrategy (_creature);
+		this.addState (moveStrategy, true);
 
-		AbstractState combatState = new CombatState (_creature);
-		this.addState (combatState);
+		AbstractStrategy combatStrategy = new CombatStrategy (_creature);
+		this.addState (combatStrategy);
 
 		_init = true;
 	}
 
-	public override void changeState(string stateName) {
-		if (_state.stateName == "Move") {
+	public override void changeStrategy(StrategysType strategyType) {
+		StrategysType currentStrategyType = _currentStrategy.getStrategyType ();
+		if (currentStrategyType == StrategysType.MOVE) {
 			_creature.agent.Stop();
-		}
-		base.changeState (stateName);
+		};
+		base.changeStrategy (strategyType);
 	}
 
-	protected override void setNewState() {
-		if (_state.stateName == "Move") {
-			if (_state.target != null){
-				_state = _allStates["Capture"];
-			} 
-		} else {
-			_state = _allStates["Move"];
+	public override void changeStrategy(AbstractStrategy strategy) {
+		StrategysType currentStrategyType = _currentStrategy.getStrategyType ();
+		if (currentStrategyType == StrategysType.MOVE) {
+			_creature.agent.Stop();
+		};
+		base.changeStrategy (strategy);
+	}
+
+	protected override void setNewStrategy() {
+		var batleObject = Physics.OverlapSphere(transform.position, 1.1f);
+		bool inCombat = false;
+		foreach (var enemy in batleObject) {
+			inCombat = __startCombat(enemy) || inCombat;
+		}
+
+		if (!inCombat) {
+			if (_currentStrategy.getStrategyType () == StrategysType.MOVE) {
+					if (_currentStrategy.target != null) {
+							_currentStrategy = _allStrategy [StrategysType.CAPTURE];
+					} 
+			} else {
+					_currentStrategy = _allStrategy [StrategysType.MOVE];
+			}
 		}
 	}
 
 	void OnTriggerEnter(Collider other) {
+		__startCombat (other);
+	}
+
+	protected bool __startCombat(Collider other) {
 		BasicCreature enemyCreature = other.GetComponent<BasicCreature>();
 		if (enemyCreature != null && _creature.owner != enemyCreature.owner) {
-			_target = enemyCreature;
-			if (_state.stateName != "Combat") {
-				this.changeState ("Combat");
+			if (_currentStrategy.getStrategyType () != StrategysType.COMBAT) {
+				_target = enemyCreature;
+				changeStrategy (StrategysType.COMBAT);
 			}
+			return true;
 		}
+		return false;
 	}
 }

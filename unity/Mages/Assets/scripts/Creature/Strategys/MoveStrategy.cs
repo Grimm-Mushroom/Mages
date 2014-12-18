@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveState: AbstractState {
+public class MoveStrategy: AbstractStrategy {
 
-	public MoveState(BasicCreature creature): base(creature) {
-		stateName = "Move";
+	public MoveStrategy(BasicCreature creature) {
+		_creature = creature;
+	}
+
+	public override StrategysType getStrategyType() {
+		return StrategysType.MOVE;
 	}
 
 	public override bool isFinish() {

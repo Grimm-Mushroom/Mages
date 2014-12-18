@@ -49,5 +49,4 @@ public class BasicCreature : AbstractDamageable {
 	private void changeOwnerAnim(Player owner) {
 		renderer.material.color = owner.color;
 	}
-
 }
