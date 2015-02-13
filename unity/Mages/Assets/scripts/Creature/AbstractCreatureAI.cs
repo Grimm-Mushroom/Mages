@@ -32,6 +32,8 @@ public abstract class AbstractCreatureAI : MonoBehaviour {
 	}
 
 	public void addState(AbstractStrategy strategy, bool mainState = false) {
+		if (mainState == null)
+			mainState = false;
 		_allStrategy.Add (strategy.getStrategyType(), strategy);
 		 
 		if (mainState) {

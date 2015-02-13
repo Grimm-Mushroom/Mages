@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_4_5_3;UNITY_4_5;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;DEVELOPMENT_BUILD;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_6_1;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;DEVELOPMENT_BUILD;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -39,19 +39,29 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>F:/Tools/Unity3d/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>F:/Tools/Unity3d/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\scripts\Creature\AbstractState.cs" />
+     <Compile Include="Assets\FireLightAnimator.cs" />
+     <Compile Include="Assets\TerrainToolkit\TerrainToolkit.cs" />
+     <Compile Include="Assets\scripts\Creature\AbstractCreatureAI.cs" />
+     <Compile Include="Assets\scripts\Creature\AbstractDamageable.cs" />
      <Compile Include="Assets\scripts\Creature\BasicCreature.cs" />
      <Compile Include="Assets\scripts\Creature\BasicCreatureAI.cs" />
-     <Compile Include="Assets\scripts\Creature\CaptureState.cs" />
-     <Compile Include="Assets\scripts\Creature\MoveState.cs" />
+     <Compile Include="Assets\scripts\Creature\HealthPoint.cs" />
+     <Compile Include="Assets\scripts\Creature\Strategys\AbstractStrategy.cs" />
+     <Compile Include="Assets\scripts\Creature\Strategys\CaptureStrategy.cs" />
+     <Compile Include="Assets\scripts\Creature\Strategys\CombatStrategy.cs" />
+     <Compile Include="Assets\scripts\Creature\Strategys\DeafStrategy.cs" />
+     <Compile Include="Assets\scripts\Creature\Strategys\MoveStrategy.cs" />
+     <Compile Include="Assets\scripts\Creature\Strategys\StrategysType.cs" />
+     <Compile Include="Assets\scripts\Creature\Strategys\StunStrategy.cs" />
      <Compile Include="Assets\scripts\Effect\AbstractEffect.cs" />
+     <Compile Include="Assets\scripts\Effect\EffectActionTypes.cs" />
      <Compile Include="Assets\scripts\Effect\EffectType.cs" />
      <Compile Include="Assets\scripts\Effect\IEffect.cs" />
      <Compile Include="Assets\scripts\Effect\MinusArmor.cs" />
@@ -64,6 +74,7 @@
      <Compile Include="Assets\scripts\Model\Property.cs" />
      <Compile Include="Assets\scripts\Model\PropertyConfig.cs" />
      <Compile Include="Assets\scripts\Mooving.cs" />
+     <Compile Include="Assets\scripts\Pitfall.cs" />
      <Compile Include="Assets\scripts\Player.cs" />
      <Compile Include="Assets\scripts\PlayerManager.cs" />
      <Compile Include="Assets\scripts\Samuray.cs" />
@@ -82,6 +93,15 @@
      <Compile Include="Assets\scripts\Spell\SpellManager.cs" />
      <Compile Include="Assets\scripts\TimerManager.cs" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+     <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
+     <None Include="Assets\TerrainToolkit\Read me.txt" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
+      <Project>{D0F77C6B-D4A5-8502-9F09-DCB42857EE22}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
