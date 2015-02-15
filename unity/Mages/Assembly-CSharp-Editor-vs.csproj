@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\SplineParticles\Code\Editor\SplineParticlesCustomInspector.cs" />
      <Compile Include="Assets\TerrainToolkit\Editor\TerrainToolkitEditor.cs" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
@@ -61,6 +62,12 @@
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+ <Reference Include="Spline">
+ <HintPath>D:/Gamedev/Mages/Mages/unity/Mages/Assets/SplineParticles/SplineEditor/Scripts/Spline.dll</HintPath>
+ </Reference>
+ <Reference Include="SplineEditor">
+ <HintPath>D:/Gamedev/Mages/Mages/unity/Mages/Assets/SplineParticles/SplineEditor/Editor/SplineEditor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

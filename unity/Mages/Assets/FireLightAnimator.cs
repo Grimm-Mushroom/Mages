@@ -22,7 +22,7 @@ public class FireLightAnimator : MonoBehaviour {
 	
 	float getNewIntesity(){
 		float result = Random.Range (minIntensity, maxIntensity);
-		Debug.Log ("newIn: " +  result);
+	//	Debug.Log ("newIn: " +  result);
 		return result;
 		
 	}

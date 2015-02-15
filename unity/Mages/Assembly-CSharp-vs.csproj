@@ -47,6 +47,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\FireLightAnimator.cs" />
+     <Compile Include="Assets\SplineParticles\Code\Extras\CameraOrbit.cs" />
+     <Compile Include="Assets\SplineParticles\Code\Extras\ParticleSelector.cs" />
+     <Compile Include="Assets\SplineParticles\Code\SplineParticles.cs" />
+     <Compile Include="Assets\SplineParticles\Code\SplineParticlesEmitterFollowPath.cs" />
      <Compile Include="Assets\TerrainToolkit\TerrainToolkit.cs" />
      <Compile Include="Assets\scripts\Creature\AbstractCreatureAI.cs" />
      <Compile Include="Assets\scripts\Creature\AbstractDamageable.cs" />
@@ -97,6 +101,9 @@
      <None Include="Assets\TerrainToolkit\Read me.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="Spline">
+ <HintPath>D:/Gamedev/Mages/Mages/unity/Mages/Assets/SplineParticles/SplineEditor/Scripts/Spline.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
