@@ -60,14 +60,14 @@
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/Editor/UnityEditor.UI.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.Graphs">
- <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ <Reference Include="SplineEditor">
+ <HintPath>D:/Gamedev/Mages/Mages/unity/Mages/Assets/SplineParticles/SplineEditor/Editor/SplineEditor.dll</HintPath>
  </Reference>
  <Reference Include="Spline">
  <HintPath>D:/Gamedev/Mages/Mages/unity/Mages/Assets/SplineParticles/SplineEditor/Scripts/Spline.dll</HintPath>
  </Reference>
- <Reference Include="SplineEditor">
- <HintPath>D:/Gamedev/Mages/Mages/unity/Mages/Assets/SplineParticles/SplineEditor/Editor/SplineEditor.dll</HintPath>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
