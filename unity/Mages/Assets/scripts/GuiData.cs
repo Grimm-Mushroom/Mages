@@ -7,10 +7,21 @@ public class GuiData : MonoBehaviour {
 	public int resA, resB, resC, resD;
 
 	void Start() {
-		InvokeRepeating("process", 5.0f, 5.0f);
+		/*
+		Platform  pl = GameObject.Find ("platform5").GetComponent<Platform> ();
+		List<List<Platform>> inDist = pl.getNeighborsFromDistance (3);
+		for (int k = 0; k < inDist.Count; k++) {
+			Debug.Log(k);
+			foreach( Platform pll in inDist[k]){
+				Debug.Log(pll.name);
+			}
+		}
+		*/
+		//InvokeRepeating("process", 5.0f, 5.0f);
 	}
 
 	private void process() {
+		/*
 		int tempResA = 0, tempResB = 0, tempResC = 0, tempResD = 0;
 
 		foreach (Beacon beacon in PlayerManager.INSTANCE.player.beacons) {
@@ -31,6 +42,7 @@ public class GuiData : MonoBehaviour {
 		resB += tempResB;
 		resC += tempResC;
 		resD += tempResD;
+		*/
 
 	}
 
